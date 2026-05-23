@@ -1,6 +1,6 @@
 # Study Binary Trees
 
-[中文](.README_CN.md)
+[中文](./README_CN.md)
 
 This folder contains two binary tree example programs, each demonstrating a different tree type and operation set.
 

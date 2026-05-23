@@ -1,6 +1,6 @@
 # 学习二叉树
 
-[English](.README.md)
+[English](./README.md)
 
 本目录包含两个二叉树示例程序，分别对应不同类型的树结构和操作：
 
