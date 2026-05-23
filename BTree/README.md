@@ -1,33 +1,35 @@
-# 学习二叉树
+# Study Binary Trees
 
-本目录包含两个二叉树示例程序，分别对应不同类型的树结构和操作：
+[中文](.README_CN.md)
+
+This folder contains two binary tree example programs, each demonstrating a different tree type and operation set.
 
 ## `BTree.cpp` / `BTree.exe`
 
-功能：
-- 采用层序输入方式创建普通二叉树，输入格式为按层序输入结点值，`#` 表示空节点。
-- 支持先序、中序、后序三种遍历输出。
-- 计算并输出二叉树的结点总数和树的高度。
+Features:
+- Builds a general binary tree from level-order input, where `#` represents an empty node.
+- Supports preorder, inorder, and postorder traversals.
+- Calculates and prints the number of nodes and the height of the tree.
 
-特点：
-- 使用队列实现层序创建。
-- 每个节点的数据类型为字符（`char`）。
-- 程序入口为 `main()`，直接运行后会提示输入层序节点数据并显示遍历结果。
+Details:
+- Uses a queue to construct the tree level by level.
+- Node values are stored as characters (`char`).
+- The program runs from `main()` and prompts for level-order input before printing traversal results.
 
 ## `BST.cpp` / `BST.exe`
 
-功能：
-- 构建一个二叉搜索树（BST），输入整数个数 `cnt`，然后依次输入 `cnt` 个整数。
-- 将这些整数插入 BST 中，保持左子树小于根、右子树大于根的性质。
-- 采用中序遍历输出 BST 中的所有节点，结果为升序排列。
+Features:
+- Builds a binary search tree (BST) from integer input.
+- Reads an integer count `cnt`, then reads `cnt` integer values and inserts them into the BST.
+- Outputs all nodes using inorder traversal, resulting in sorted ascending order.
 
-特点：
-- 插入操作使用递归实现。
-- 查找函数 `Find()` 支持按值查找 BST 中的节点。
-- 程序入口为 `main()`，运行后会提示输入数据并输出排序后的结果。
+Details:
+- Insertion is implemented recursively.
+- The `Find()` function supports value lookup in the BST.
+- The program runs from `main()`, prompts for input, and prints the sorted traversal output.
 
-### 使用建议
+### Usage Suggestions
 
-1. 分别编译 `BTree.cpp` 和 `BST.cpp`。
-2. 运行 `BTree.exe` 测试普通二叉树创建与遍历。
-3. 运行 `BST.exe` 测试二叉搜索树的插入与中序遍历。
+1. Compile `BTree.cpp` and `BST.cpp` separately.
+2. Run `BTree.exe` to test general binary tree creation and traversal.
+3. Run `BST.exe` to test BST insertion and inorder traversal.
