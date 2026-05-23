@@ -22,10 +22,14 @@ Features:
 - Builds a binary search tree (BST) from integer input.
 - Reads an integer count `cnt`, then reads `cnt` integer values and inserts them into the BST.
 - Outputs all nodes using inorder traversal, resulting in sorted ascending order.
+- Find min/max: Supports finding the minimum and maximum values in the BST.
+- Delete operation: Supports deleting a node with value X while maintaining BST properties.
 
 Details:
 - Insertion is implemented recursively.
 - The `Find()` function supports value lookup in the BST.
+- Supports finding the minimum and maximum values in the binary search tree.
+- Supports deleting a node with a specified value while maintaining BST properties.
 - The program runs from `main()`, prompts for input, and prints the sorted traversal output.
 
 ### Usage Suggestions

@@ -33,6 +33,32 @@ Position Find(BinTree BST, ElementType X)
 	return BST;
 }
 
+Position FindMin(BinTree BST)
+{
+	if(!BST){
+		return NULL;
+	}
+	else if(!BST->Left){	//当左子树为空时，返回当前结点
+		return BST;
+	}
+	else{	//继续在左子树中寻找最小元素
+		return FindMin(BST->Left);
+	}
+}
+
+Position FindMax(BinTree BST)
+{
+	if(!BST){
+		return NULL;
+	}
+	else if(!BST->Right){	//当右子树为空时，返回当前结点
+		return BST;
+	}
+	else{	//继续在右子树中寻找最大元素
+		return FindMax(BST->Right);
+	}
+}
+
 BinTree Insert(BinTree BST, ElementType X)
 {
 	if(!BST){ //当前结点不存在时，生成Data=X的结点
@@ -53,6 +79,40 @@ BinTree Insert(BinTree BST, ElementType X)
 	return BST;
 }
 
+Position Delete(BinTree BST, ElementType X)
+{
+	if(!BST){
+		return NULL;
+	}
+	else if(X>BST->Data){
+		//当X>Data时，在右子树中删除
+		BST->Right = Delete(BST->Right,X);
+	}
+	else if(X< BST->Data){
+		//当X<Data时，在左子树中删除
+		BST->Left = Delete(BST->Left,X);
+	}
+	else{
+		//找到要删除的结点
+		if(BST->Left && BST->Right){	
+			//当左右子树都存在时，找到右子树中的最小元素替换当前结点，并删除右子树中的最小元素
+			BST->Data = FindMin(BST->Right)->Data;
+			BST->Right = Delete(BST->Right, BST->Data);
+		}
+		else{	
+			//当左右子树至少有一个不存在时，直接用非空子树替换当前结点，并删除当前结点
+			BinTree temp = BST;
+			if(!BST->Left){
+				BST = BST->Right;
+			}
+			else{
+				BST = BST->Left;
+			}
+			free(temp);
+		}
+	}
+	return BST;
+}
 void orderTraversal(BinTree BT)
 {
 	if(BT){
@@ -83,6 +143,7 @@ BinTree CreateBST()
 }
 
 
+
 int main()
 {
 	BinTree tr;
@@ -91,7 +152,22 @@ int main()
 	orderTraversal(tr);
 	printf("\n");
 
+	// 插入10
+	printf("insert 10\n");
+	Insert(tr, 10);
+	orderTraversal(tr);
+	printf("\n");
+	printf("find 10: %d\n",Find(tr, 10)->Data);
+	printf("min: %d\n",FindMin(tr)->Data);
+	printf("max: %d\n",FindMax(tr)->Data);
+	// 删除10
+	printf("delete 10\n");
+	Delete(tr, 10);
+	orderTraversal(tr);
+	printf("\n");
+
 	system("pause");
+		
 }
 
 
