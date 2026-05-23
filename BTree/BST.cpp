@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -62,21 +64,11 @@ void orderTraversal(BinTree BT)
 
 BinTree CreateBST()
 {
-	BinTree temp = NULL;
+	BinTree temp=NULL;
 	ElementType ch;
-	int cnt;
-	//scanf("%d", &ch);
-	/*if(ch=EXIT){ 
-		printf("exit");
-		return NULL;
-	}*/
-	/*
-	temp = (BinTree)malloc(sizeof(struct TNode));
-	if(!temp){
-		printf("内存分配失败");
-		return NULL;
-	}*/
+	/* ===循环创建=== */
 	// 输入结点个数
+	int cnt;
 	if(scanf("%d", &cnt) != 1 || cnt <= 0){
 		return NULL;
 	}
@@ -88,15 +80,6 @@ BinTree CreateBST()
 		temp = Insert(temp, ch);
 	}
 	return temp;
-	/*temp->Data = ch;
-	scanf("%d",ch);
-	if(ch>temp->Data){
-		temp->Right = CreateBST();
-	}
-	else if(ch<temp->Data){
-		temp->Left = CreateBST();
-	}
-	return temp;*/
 }
 
 
