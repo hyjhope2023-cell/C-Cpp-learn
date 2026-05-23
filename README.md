@@ -1,10 +1,17 @@
-# C/C++ Learning Folder
+# Data Structure Learning Folder
 
-This folder contains code and exercises for learning C/C++.
+This folder contains code and exercises for learning Data Structure.
 
 [中文版本](README_CN.md)
 
 ## Added Learning Content
+
+### Linear List Learning Code
+
+Linear list related learning code has been added, including but not limited to:
+- Sequential list (array-based implementation)
+- Basic operations: initialization, insertion, deletion, search, and traversal
+- Student information management system
 
 ### Binary Tree Learning Code
 
@@ -17,10 +24,15 @@ Binary tree related learning code has been added, including but not limited to:
 ## Directory Structure
 
 ```
-learn/
+data structure/
 ├── README.md          # This README file (English)
 ├── README_CN.md       # Chinese README
-├── main/              # Main program directory
-│   └── Tree/          # Binary tree learning code
-└── etc/               # Other configuration or tool files
+├── LinearList/        # Linear list learning code
+│   ├── SequenceList.cpp    # Sequential list implementation
+│   └── SequenceList.exe
+├── BTree/             # Binary tree learning code
+│   ├── BTree.cpp           # General binary tree
+│   ├── BST.cpp             # Binary search tree
+│   └── etc.
+└── .vscode/           # VSCode configuration files
 ```
