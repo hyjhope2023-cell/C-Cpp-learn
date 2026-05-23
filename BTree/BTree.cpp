@@ -4,7 +4,6 @@
 #include <malloc.h>
 #include <stdlib.h>
 
-
 #define MAXSIZE 100
 
 typedef char ElementType;   // 定义数据类型
