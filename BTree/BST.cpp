@@ -26,7 +26,7 @@ Position Find(BinTree BST, ElementType X)
 			// 当 X < Data 时，查找左子树
 			BST = BST->Left;
 		}
-		else{	//找到X所在结点，或结点不存在
+		else{	//找到X所在结点
 			break;
 		}
 	}
@@ -128,11 +128,13 @@ BinTree CreateBST()
 	ElementType ch;
 	/* ===循环创建=== */
 	// 输入结点个数
+	printf("请输入结点个数：");
 	int cnt;
 	if(scanf("%d", &cnt) != 1 || cnt <= 0){
 		return NULL;
 	}
-
+	// 输入结点数据
+	printf("请输入结点数据：");
 	for(int i = 0; i < cnt; i++){
 		if(scanf("%d", &ch) != 1){
 			break;
@@ -147,7 +149,6 @@ BinTree CreateBST()
 int main()
 {
 	BinTree tr;
-	printf("input data\n");
 	tr = CreateBST();
 	orderTraversal(tr);
 	printf("\n");
@@ -169,7 +170,3 @@ int main()
 	system("pause");
 		
 }
-
-
-
-

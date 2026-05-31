@@ -3,41 +3,41 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MaxVertexNum 100	/* ×î´ó¶¥µã¸öÊı */
+#define MaxVertexNum 100	/* æœ€å¤§é¡¶ç‚¹ä¸ªæ•° */
 
 typedef int Vertex;
-typedef int WeightType;		/* ±ßµÄÈ¨ÖØ */
-typedef char DataType;		/* ¶¥µã´¢´æµÄÊı¾İÀàĞÍ */
+typedef int WeightType;		/* è¾¹çš„æƒé‡ */
+typedef char DataType;		/* é¡¶ç‚¹å‚¨å­˜çš„æ•°æ®ç±»å‹ */
 typedef int Bool;
 
-/* ±ßµÄ¶¨Òå */
+/* è¾¹çš„å®šä¹‰ */
 typedef struct ENode{
-	Vertex V1,V2;		/* ÓĞÏò±ß<V1,V2> */
-	WeightType Weight;	/* ±ßµÄÈ¨ÖØ */
+	Vertex V1,V2;		/* æœ‰å‘è¾¹<V1,V2> */
+	WeightType Weight;	/* è¾¹çš„æƒé‡ */
 }*PtrToENode,*Edge;
 
-/* ÁÚ½ÓµãµÄ¶¨Òå */
+/* é‚»æ¥ç‚¹çš„å®šä¹‰ */
 typedef struct AdjVNode *PtrToAdjVNode;
 struct AdjVNode{
-	Vertex AdjV;		/* ÁÚ½ÓµãµÄÏÂ±ê */
-	WeightType Weight;	/* ±ßÈ¨ÖØ */
-	PtrToAdjVNode Next;	/* Ö¸ÏòÏÂÒ»¸öÁÚ½ÓµãµÄÖ¸Õë */
+	Vertex AdjV;		/* é‚»æ¥ç‚¹çš„ä¸‹æ ‡ */
+	WeightType Weight;	/* è¾¹æƒé‡ */
+	PtrToAdjVNode Next;	/* æŒ‡å‘ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹çš„æŒ‡é’ˆ */
 };
 
-/* ¶¥µã±íÍ·½áµãµÄ¶¨Òå */
+/* é¡¶ç‚¹è¡¨å¤´ç»“ç‚¹çš„å®šä¹‰ */
 typedef struct VNode{
-	PtrToAdjVNode FirstEdge;	/*±ß±íÍ·Ö¸Õë */
-	DataType Data;	/* ¶¥µãµÄÊı¾İ */
+	PtrToAdjVNode FirstEdge;	/*è¾¹è¡¨å¤´æŒ‡é’ˆ */
+	DataType Data;	/* é¡¶ç‚¹çš„æ•°æ® */
 }AdjList[MaxVertexNum];
 
-/* Í¼½áµãµÄ¶¨Òå */
+/* å›¾ç»“ç‚¹çš„å®šä¹‰ */
 typedef struct GNode{
-	int Nv;		/* ¶¥µãÊı */
-	int Ne;		/* ±ßÊı */
-	AdjList G;	/* ÁÚ½Ó±í */
- }*PtrToGNode,*LGraph;	/* LGraph ÒÔÁÚ½Ó±í·½Ê½´æ´¢µÄÍ¼ÀàĞÍ */
+	int Nv;		/* é¡¶ç‚¹æ•° */
+	int Ne;		/* è¾¹æ•° */
+	AdjList G;	/* é‚»æ¥è¡¨ */
+ }*PtrToGNode,*LGraph;	/* LGraph ä»¥é‚»æ¥è¡¨æ–¹å¼å­˜å‚¨çš„å›¾ç±»å‹ */
 
-/* ´´½¨ÎŞ±ßµÄ¶¥µãÍ¼ */
+/* åˆ›å»ºæ— è¾¹çš„é¡¶ç‚¹å›¾ */
 LGraph CreateGraph(int VertexNum){
 	LGraph graph = (LGraph)malloc(sizeof(struct GNode));
 	if(!graph){return graph;}
@@ -74,22 +74,22 @@ LGraph BuildGraph(){
 	Vertex V;
 	int Nv,i;
 
-	/* ³õÊ¼»¯¶¥µãÍ¼ */
-	printf("ÇëÊäÈë¶¥µã¸öÊı£º");
+	/* åˆå§‹åŒ–é¡¶ç‚¹å›¾ */
+	printf("è¯·è¾“å…¥é¡¶ç‚¹ä¸ªæ•°ï¼š");
 	scanf("%d",&Nv);
 	Graph = CreateGraph(Nv);	
 
-	/* ÊäÈë±ßÊı */
-	printf("ÇëÊäÈë±ßÊı£º");
+	/* è¾“å…¥è¾¹æ•° */
+	printf("è¯·è¾“å…¥è¾¹æ•°ï¼š");
 	scanf("%d",&Graph->Ne);	
 
-	/* Èç¹ûÎŞ±ß£¬ÔòÍË³ö */
+	/* å¦‚æœæ— è¾¹ï¼Œåˆ™é€€å‡º */
 	if(Graph->Ne <= 0){ return Graph;}
-	/*ÓĞ±ßÊ± */
-	E = (Edge)malloc(sizeof(struct ENode));	/* ½¨Á¢±ß½áµã */
+	/*æœ‰è¾¹æ—¶ */
+	E = (Edge)malloc(sizeof(struct ENode));	/* å»ºç«‹è¾¹ç»“ç‚¹ */
 
-	/* ¶ÁÈë±ß£¬¸ñÊ½Îª"Æğµã ÖÕµã È¨ÖØ", ²åÈëÁÚ½Ó¾ØÕó */
-	printf("ÊäÈë±ß(¸ñÊ½Îª£ºÆğµã ÖÕµã È¨ÖØ):\n");
+	/* è¯»å…¥è¾¹ï¼Œæ ¼å¼ä¸º"èµ·ç‚¹ ç»ˆç‚¹ æƒé‡", æ’å…¥é‚»æ¥çŸ©é˜µ */
+	printf("è¾“å…¥è¾¹(æ ¼å¼ä¸ºï¼šèµ·ç‚¹ ç»ˆç‚¹ æƒé‡):\n");
 
 	for(i=0;i<Graph->Ne;i++){
 		scanf("%d %d %d",&E->V1,&E->V2,&E->Weight);
@@ -98,14 +98,14 @@ LGraph BuildGraph(){
 	return Graph;
 }
 
-/* Éî¶ÈÓÅÏÈËÑË÷ */
-bool visited[MaxVertexNum];	/* ·ÃÎÊ½áµã±ê¼Ç */
+/* æ·±åº¦ä¼˜å…ˆæœç´¢ */
+bool visited[MaxVertexNum];	/* è®¿é—®ç»“ç‚¹æ ‡è®° */
 
 void DFS(LGraph graph,Vertex index)
 {
 	PtrToAdjVNode temp;	
 
-	printf("ÏÂ±ê£º%d,È¨ÖØ£º%d\n",graph->G[index].FirstEdge->AdjV,graph->G[index].FirstEdge->Weight);
+	printf("ä¸‹æ ‡ï¼š%d<->%d,æƒé‡ï¼š%d\n",index,graph->G[index].FirstEdge->AdjV,graph->G[index].FirstEdge->Weight);
 	visited[index] = TRUE;
 
 	temp = graph->G[index].FirstEdge->Next;
@@ -118,7 +118,7 @@ void DFS(LGraph graph,Vertex index)
 }
 
 void DFS_Visit(LGraph graph){
-	/* Ïû³ı·ÃÎÊ±êÊ¾ */
+	/* æ¶ˆé™¤è®¿é—®æ ‡ç¤º */
 	for(int i=0;i<MaxVertexNum;i++){
 		visited[i] = 0;
 	}
